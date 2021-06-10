@@ -1,6 +1,6 @@
-# CondLaneNet: a Top-to-down Lane Detection Framework Based on ConditionalConvolution
-This is the official implementation code of the paper "CondLaneNet: a Top-to-down Lane Detection Framework Based on ConditionalConvolution".
-We achieve state-of-the-art performance on multiple lane detection benchmarks.
+# CondLaneNet: a Top-to-down Lane Detection Framework Based on Conditional Convolution
+This is the official implementation code of the paper "CondLaneNet: a Top-to-down Lane Detection Framework Based on ConditionalConvolution". (Link: [https://arxiv.org/abs/2105.05003](https://arxiv.org/abs/2105.05003))
+We achieve state-of-the-art performance on multiple lane detection benchmarks. 
 
 ![Architecture,](images/scheme.png)
 
