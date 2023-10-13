@@ -349,10 +349,10 @@ class CondLaneNet(SingleStageDetector):
         losses = self.loss(output, img_metas, **kwargs)
         return losses
 
-    def test_inference(self, img):
+    def test_inference(self, img, thr=0.5):
         output = self.backbone(img)
         output, memory = self.neck(output)
-        seeds, hm = self.bbox_head.forward_test(output, None, 0.5)
+        seeds, hm = self.bbox_head.forward_test(output, None, thr)
         return [seeds, hm]
 
     def forward_test(self,
@@ -360,13 +360,15 @@ class CondLaneNet(SingleStageDetector):
                      img_metas,
                      benchmark=False,
                      hack_seeds=None,
+                     thr=0.3,
                      **kwargs):
         """Test without augmentation."""
         output = self.backbone(img.type(torch.cuda.FloatTensor))
         output, memory = self.neck(output)
+        thr = kwargs.get('thr', thr)
         if self.head:
             seeds, hm = self.bbox_head.forward_test(output, hack_seeds,
-                                                    kwargs['thr'])
+                                                    thr)
         return [seeds, hm]
 
     def forward_dummy(self, img):

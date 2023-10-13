@@ -3,7 +3,7 @@
 """
 # global settings
 dataset_type = 'TuSimpleDataset'
-data_root = "/disk1/zhouyang/dataset/tuSimple"
+data_root = ""
 test_mode = False
 mask_down_scale = 8
 hm_down_scale = 16
