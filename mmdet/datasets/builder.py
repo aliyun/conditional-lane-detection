@@ -118,6 +118,7 @@ def build_dataloader(dataset,
         collate_fn=partial(collate, samples_per_gpu=samples_per_gpu),
         pin_memory=False,
         worker_init_fn=init_fn,
+        drop_last=True,
         **kwargs)
 
     return data_loader

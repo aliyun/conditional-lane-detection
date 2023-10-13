@@ -334,7 +334,8 @@ class CondLaneHead(nn.Module):
             return ret
 
         heat_nms = _nms(heat)
-        heat_nms = heat_nms.squeeze(0).permute(1, 2, 0).detach().cpu().numpy()
+        # heat_nms = heat_nms.squeeze(0).permute(1, 2, 0).detach().cpu().numpy()    # src heatnms [12,1,20,50]
+        heat_nms = heat_nms.squeeze().permute(1, 2, 0).detach().cpu().numpy()
         inds = np.where(heat_nms > thr)
         seeds = _format(heat_nms, inds)
         return seeds

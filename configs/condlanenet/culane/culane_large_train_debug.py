@@ -10,7 +10,8 @@ num_lane_classes = 1
 line_width = 3
 radius = 6
 nms_thr = 4
-batch_size = 24
+thr = 0.
+batch_size = 12
 img_norm_cfg = dict(
     mean=[75.3, 76.6, 77.6], std=[50.5, 53.8, 54.3], to_rgb=False)
 ori_scale = (1640, 590)  # for culane
@@ -189,14 +190,14 @@ data = dict(
     train=dict(
         type=dataset_type,
         data_root=data_root,
-        data_list=data_root + '/list/train.txt',
+        data_list=data_root + '/list/train_debug.txt',
         pipeline=train_pipeline,
         test_mode=False,
     ),
     val=dict(
         type=dataset_type,
         data_root=data_root,
-        data_list=data_root + '/list/val.txt',
+        data_list=data_root + '/list/val_debug.txt',
         pipeline=val_pipeline,
         test_mode=False,
     ),
@@ -229,13 +230,13 @@ log_config = dict(
         dict(type='TextLoggerHook'),
     ])
 
-total_epochs = 60
+total_epochs = 5
 device_ids = "0,1,2,3,4,5,6,7"
 # device_ids = "0,1,2,3"
 dist_params = dict(backend='nccl')
 log_level = 'INFO'
-work_dir = './work_dirs/exps/culane310_1040/large_60epoch_10121700'
+work_dir = './work_dirs/exps/culane310_1040/large_debug'
 load_from = None
 resume_from = None
-workflow = [('train', 60), ('val', 1)]
-# workflow = [('train', 5), ('val', 1)]
+# workflow = [('train', 200), ('val', 10)]
+workflow = [('train', 5), ('val', 1)]

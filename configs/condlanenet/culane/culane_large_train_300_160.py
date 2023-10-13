@@ -15,7 +15,7 @@ img_norm_cfg = dict(
     mean=[75.3, 76.6, 77.6], std=[50.5, 53.8, 54.3], to_rgb=False)
 ori_scale = (1640, 590)  # for culane
 # crop_bbox = [0, 270, 1640, 590]   # SRC CROP_SHAPE
-crop_bbox = [300, 80, 1340, 390]   
+crop_bbox = [400, 200, 1240, 400]   
 img_scale = (800, 320)
 mask_size = (1, 80, 200)
 
@@ -234,7 +234,7 @@ device_ids = "0,1,2,3,4,5,6,7"
 # device_ids = "0,1,2,3"
 dist_params = dict(backend='nccl')
 log_level = 'INFO'
-work_dir = './work_dirs/exps/culane310_1040/large_60epoch_10121700'
+work_dir = './work_dirs/exps/culane200_840/large_60epoch_10121750'
 load_from = None
 resume_from = None
 workflow = [('train', 60), ('val', 1)]
